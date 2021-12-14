@@ -11,12 +11,12 @@ arisLIMS is an in-house inventory management system designed for dealing with sa
 docker-compose up
 ```
 
-2. While app is running, check to see if all 3 containers are running
+2. While app is running, in a separate window, check to see if all 3 containers are running
 ```bash
 docker container ls
 ```
 
-3. Enter the mysql container and log into mysql
+3. Enter the mysql container and log into mysql (note: default password for username root is also root)
 ```bash
 docker exec -it CONTAINER_ID bash
 mysql -u root -p
