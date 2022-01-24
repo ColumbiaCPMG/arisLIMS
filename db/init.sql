@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS samples(Progeny_ID VARCHAR(30), Family_ID VARCHAR(30)
 
 INSERT INTO users (username,password,usertype,firstname,lastname) VALUES ('admin','admin','ADMIN','LIMS','DEVELOPER');
 
-LOAD DATA LOCAL INFILE '/docker-entrypoint-initdb.d/samples_report_2021-12-02_allsamples_n48092.csv' INTO TABLE arisDB.samples FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 ROWS (@dummy, `Progeny_ID`,`Family_ID`,`Aliquot_Label`,`Sample_Type`,`Fridge_Name`,`Shelf_No`,`Rack_Label`,`Project_Name`,`Researcher_Name`,`Date_Taken_Out`,`Collection_Date`,`Original_Fridge`,`Original_Shelf`,`Original_Rack`,`Original_Drawer`,`Original_Box`,`Original_Well`,@dummy,`Low_DNA`, `Depleted_DNA`,`comments`);
+LOAD DATA LOCAL INFILE '/docker-entrypoint-initdb.d/dummy_database.csv' INTO TABLE arisDB.samples FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 ROWS (@dummy, `Progeny_ID`,`Family_ID`,`Aliquot_Label`,`Sample_Type`,`Fridge_Name`,`Shelf_No`,`Rack_Label`,`Project_Name`,`Researcher_Name`,`Date_Taken_Out`,`Collection_Date`,`Original_Fridge`,`Original_Shelf`,`Original_Rack`,`Original_Drawer`,`Original_Box`,`Original_Well`,@dummy,`Low_DNA`, `Depleted_DNA`,`comments`);
 
 UPDATE arisDB.samples SET Collection_Date = CASE WHEN Collection_Date = '' THEN '' ELSE STR_TO_DATE(Collection_Date, '%m/%d/%Y') END;
 
